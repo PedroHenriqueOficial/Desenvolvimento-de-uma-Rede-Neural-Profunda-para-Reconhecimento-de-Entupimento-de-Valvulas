@@ -63,6 +63,7 @@ Ao aplicar o balanceamento dinâmico assimétrico (+2%), o modelo apresentou uma
 - **Redução de Falsos Positivos:** A pequena vantagem numérica para a classe "Normal" foi suficiente para frear alarmes falsos excessivos que ocorreriam em um modelo 50/50 perfeito.
 - **Aumento do Recall (Sensibilidade)**: O modelo passou a identificar ativamente os estágios de entupimento que antes eram completamente ignorados pelo modelo desbalanceado.
 - A análise visual através da **Curva de Aprendizado** e da **Matriz de Confusão** comprovam matematicamente a capacidade da rede de generalizar regras físicas para dados inéditos do mundo real.
+- A rede apresentou uma **acurácia final de 49,16%**.
 
 # 💻 Como Executar
 
