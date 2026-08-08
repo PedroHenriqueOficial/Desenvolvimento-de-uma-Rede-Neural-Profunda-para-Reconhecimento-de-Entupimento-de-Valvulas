@@ -31,3 +31,48 @@ Para resolver este problema de engenharia e encontrar o ponto de operação idea
     - Em vez de ler medições isoladas, o modelo recebe tensores 3D contendo blocos temporais (as últimas **10 medições**), permitindo que as camadas LSTM compreendam a tendência de degradação temporal do fluxo.
 
 3. **Divisão Cronológica (*Data Splitting*):**
+
+    - `70%` Treino | `15%` Validação | `15%` Teste.
+    - A divisão foi estritamente cronológica, sem embaralhamento prévio, para evitar vazamento de dados do futuro para o passado (*Data Leakage*).
+
+4. **Arquitetura da Deep RNN:**
+
+    - **Input Layer:** (10 passos de tempo, 4 variáveis/*features*).
+    - **Hidden Layer 1:** LSTM (64 neurônios) + Dropout (20%).
+    - **Hidden Layer 2:** LSTM (32 neurônios) + Dropout (20%).
+    - **Output Layer:** Dense (4 neurônios com ativação `softmax`).
+    - **Otimizador:** Adam.
+
+# 📊 Resultados Obtidos
+
+Ao aplicar o balanceamento dinâmico assimétrico (+2%), o modelo apresentou uma evolução notável na capacidade de detecção de anomalias raras.
+
+- **Redução de Falsos Positivos:** A pequena vantagem numérica para a classe "Normal" foi suficiente para frear alarmes falsos excessivos que ocorreriam em um modelo 50/50 perfeito.
+- **Aumento do Recall (Sensibilidade)**: O modelo passou a identificar ativamente os estágios de entupimento que antes eram completamente ignorados pelo modelo desbalanceado.
+- A análise visual através da **Curva de Aprendizado** e da **Matriz de Confusão** comprovam matematicamente a capacidade da rede de generalizar regras físicas para dados inéditos do mundo real.
+
+# 💻 Como Executar
+
+<big>**Pré-requisitos**</big>
+
+Certifique-se de ter o Python instalado (recomendado >= 3.8) e instale as dependências necessárias:
+
+```bash
+   pip install pandas numpy tensorflow keras matplotlib seaborn scikit-learn
+```
+
+<big>**Rodando o script**</big>
+
+1. Clone este repositório.
+2. Certifique-se de que o arquivo `dados_limpos_e_normalizados.csv` esteja no mesmo diretório do script.
+3. Execute o código:
+
+```bash
+   python Modelo_Deep_RNN_4.py
+```
+
+Ao final do treinamento (20 épocas), o script abrirá o gráfico da Curva de Aprendizado automaticamente. Feche a janela para visualizar a Matriz de Confusão.
+
+# 🤝 Agradecimentos
+
+Um agradecimento especial aos professores da disciplina de Introdução às Redes Neurais Profundas (UFES) pela orientação teórica, e à empresa parceira pela disponibilização dos dados reais de sensores que tornaram este estudo possível e aplicável ao cenário industrial.
