@@ -43,6 +43,19 @@ Para resolver este problema de engenharia e encontrar o ponto de operação idea
     - **Output Layer:** Dense (4 neurônios com ativação `softmax`).
     - **Otimizador:** Adam.
 
+5. **Resumo do Modelo (Model Summary):**
+
+    - A rede possui pouco mais de **30 mil parâmetros treináveis**, ocupando cerca de 118 KB de memória. Essa leveza é um diferencial crucial para a indústria, pois permite que a inferência (*deploy*) seja realizada em hardwares industriais com recursos limitados de processamento na própria planta (*Edge Computing*). 
+    - Utilizou-se o **modelo "sequencial"**.
+
+        | **Layer (type)** | **Output Shape** | **Param #** |
+        |---|---|---|
+        | lstm (LSTM) | (None, 10, 64) | 17,764 |
+        | dropout (Dropout) | (None, 10, 64) | 0 |
+        | lstm_1 (LSTM) | (None, 32) | 12,416 |
+        | dropout_1 (Dropout) | (None, 32) | 0 |
+        | dense (Dense) | (None, 4) | 132 |
+
 # 📊 Resultados Obtidos
 
 Ao aplicar o balanceamento dinâmico assimétrico (+2%), o modelo apresentou uma evolução notável na capacidade de detecção de anomalias raras.
