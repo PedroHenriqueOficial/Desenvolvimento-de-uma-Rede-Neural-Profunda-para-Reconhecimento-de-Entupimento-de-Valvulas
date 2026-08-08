@@ -68,11 +68,11 @@ Certifique-se de ter o Python instalado (recomendado >= 3.8) e instale as depend
 3. Execute o código:
 
 ```bash
-   python Modelo_Deep_RNN_4.py
+   python Modelo_Deep_RNN.py
 ```
 
 Ao final do treinamento (20 épocas), o script abrirá o gráfico da Curva de Aprendizado automaticamente. Feche a janela para visualizar a Matriz de Confusão.
 
 # 🤝 Agradecimentos
 
-Um agradecimento especial aos professores da disciplina de Introdução às Redes Neurais Profundas (UFES) pela orientação teórica, e à empresa parceira pela disponibilização dos dados reais de sensores que tornaram este estudo possível e aplicável ao cenário industrial.
+Um agradecimento especial aos professores da disciplina de Introdução às Redes Neurais Profundas (UFES) pela orientação teórica, e à empresa pela disponibilização dos dados reais de sensores que tornaram este estudo possível e aplicável ao cenário industrial.
